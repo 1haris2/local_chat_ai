@@ -82,12 +82,15 @@ class ModelCard extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text(
-                                model.name,
-                                style: const TextStyle(
-                                  color: AppTheme.textPrimary,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
+                              Expanded(
+                                child: Text(
+                                  model.name,
+                                  style: const TextStyle(
+                                    color: AppTheme.textPrimary,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               if (isActive) ...[
