@@ -134,13 +134,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       SizedBox(
                         width: 16,
                         height: 16,
-                        child: CircularProgressIndicator(
+                        child: const CircularProgressIndicator(
                           strokeWidth: 2,
                           color: AppTheme.accentPurple,
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text(
+                      const SizedBox(width: 10),
+                      const Text(
                         'Loading model...',
                         style: TextStyle(
                           color: AppTheme.textSecondary,

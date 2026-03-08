@@ -1,19 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../models/chat_session.dart';
 
 class ChatHistoryService {
-  static const String _key = 'chat_sessions_v1';
-  SharedPreferences? _prefs;
-
-  Future<void> init() async {
-    _prefs ??= await SharedPreferences.getInstance();
-  }
+  static const String _key = 'chat_sessions_v1_secure';
+  final FlutterSecureStorage _storage = const FlutterSecureStorage();
 
   Future<List<ChatSession>> getSessions() async {
-    await init();
-    final jsonString = _prefs!.getString(_key);
+    final jsonString = await _storage.read(key: _key);
     if (jsonString == null) return [];
 
     try {
@@ -31,9 +26,8 @@ class ChatHistoryService {
   }
 
   Future<void> saveSessions(List<ChatSession> sessions) async {
-    await init();
     final jsonString = jsonEncode(sessions.map((s) => s.toJson()).toList());
-    await _prefs!.setString(_key, jsonString);
+    await _storage.write(key: _key, value: jsonString);
   }
 
   Future<void> saveSession(ChatSession session) async {

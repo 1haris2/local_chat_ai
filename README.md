@@ -57,11 +57,17 @@ Created by **Haris**.
 
 ### Building for Production (APK)
 
-To generate a highly optimized and shrunk release Android APK:
+To generate a highly optimized and secure release Android APK with code obfuscation (to prevent reverse engineering):
 
 ```bash
-flutter build apk --release
+flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols
 ```
+
+## 🛡️ Security & Privacy
+
+- **Encrypted Storage:** All chat histories and sessions are stored using `FlutterSecureStorage`, which uses AES encryption backed by the device's hardware-level keychain (Android Keystore).
+- **100% Local Inference:** AI models run entirely on-device. No text or data is ever sent to a server.
+- **Manifest Hardening:** The app follows the principle of least privilege, minimizing the permissions requested in the Android manifest.
 
 ## 📱 Screenshots & Previews
 
@@ -79,7 +85,3 @@ This project is open-source and available under the MIT License.
 ---
 
 \*Developed with ❤️ by **Haris\***
-
-offline chat ai
-
-> > > > > > > 1f5df5f1cc645ca542e3927b2a7ad53d78c4870d

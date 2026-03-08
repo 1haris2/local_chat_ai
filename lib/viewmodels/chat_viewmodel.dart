@@ -145,6 +145,7 @@ class ChatViewModel extends ChangeNotifier {
 
     final assistantIndex = _messages.length - 1;
     final buffer = StringBuffer();
+    Timer? throttleTimer;
 
     try {
       final stream = _llamaService.generateChat(
@@ -161,9 +162,16 @@ class ChatViewModel extends ChangeNotifier {
           _messages[assistantIndex] = _messages[assistantIndex].copyWith(
             content: buffer.toString(),
           );
-          notifyListeners();
+
+          // Throttle UI updates to 100ms to improve performance
+          if (throttleTimer == null || !throttleTimer!.isActive) {
+            throttleTimer = Timer(const Duration(milliseconds: 100), () {
+              notifyListeners();
+            });
+          }
         },
         onDone: () {
+          throttleTimer?.cancel();
           _messages[assistantIndex] = _messages[assistantIndex].copyWith(
             isStreaming: false,
           );
