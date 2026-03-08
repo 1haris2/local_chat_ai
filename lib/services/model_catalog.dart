@@ -73,13 +73,27 @@ class ModelCatalog {
       recommendedRamGb: 6,
     ),
     ModelInfo(
-      id: 'qwen3.5-4b-uncensored-q4',
-      name: 'Qwen 3.5 4B (Uncensored)',
+      id: 'qwen2.5-3b-instruct-q4',
+      name: 'Qwen 2.5 3B Instruct',
       description:
-          'Fully uncensored Qwen 3.5 variant with zero capability loss. Very aggressive, refuses nothing.',
-      fileName: 'Qwen3.5-4B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf',
+          'Top-tier reasoning and coding capabilities for its size. High quality responses suitable for many tasks.',
+      fileName: 'Qwen2.5-3B-Instruct-Q4_K_M.gguf',
       downloadUrl:
-          'https://huggingface.co/HauhauCS/Qwen3.5-4B-Uncensored-HauhauCS-Aggressive-GGUF/resolve/main/Qwen3.5-4B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf',
+          'https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF/resolve/main/Qwen2.5-3B-Instruct-Q4_K_M.gguf',
+      fileSizeBytes: 1980000000, // ~1.98 GB
+      quantization: 'Q4_K_M',
+      family: 'Qwen 2.5',
+      parameterSize: '3B',
+      recommendedRamGb: 6,
+    ),
+    ModelInfo(
+      id: 'qwen3.5-4b-q4',
+      name: 'Qwen 3.5 4B',
+      description:
+          'Excellent capabilities in coding and reasoning. Balanced speed and quality. Needs 6GB+ RAM.',
+      fileName: 'Qwen3.5-4B-Q4_K_M.gguf',
+      downloadUrl:
+          'https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf',
       fileSizeBytes: 2600000000, // ~2.6 GB
       quantization: 'Q4_K_M',
       family: 'Qwen 3.5',
